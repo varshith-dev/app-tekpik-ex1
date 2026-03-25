@@ -8,19 +8,20 @@
   align-items: start;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
     padding: 2rem 1.5rem;
-    gap: 2rem;
+    gap: 3rem;
   }
 }
 
 .imageSection {
   width: 100%;
   aspect-ratio: 1/1;
-  background-color: var(--gray-light);
-  border-radius: 1rem;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   position: sticky;
   top: 100px;
@@ -38,40 +39,49 @@
 }
 
 .breadcrumbs {
-  font-size: 0.875rem;
-  color: var(--gray-dark);
-  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--foreground-muted);
+  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 500;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  color: var(--foreground);
 }
 
 .price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gray-dark);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground-muted);
   margin-bottom: 2rem;
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--gray-dark);
-  margin-bottom: 2rem;
+  color: var(--foreground-muted);
+  margin-bottom: 3rem;
 }
 
 .featuresTitle {
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-bottom: 1rem;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
 }
 
 .featuresList {
@@ -80,41 +90,45 @@
   margin: 0 0 3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .featureItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
-  font-size: 0.9375rem;
-  color: var(--gray-dark);
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+  line-height: 1.5;
 }
 
 .featureIcon {
-  color: var(--accent);
+  color: var(--foreground);
   flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
+/* Add to Cart Button Profile */
 .addToCartBtn {
-  background-color: var(--foreground);
+  background-color: var(--accent);
   color: var(--background);
-  padding: 1.25rem 2rem;
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .addToCartBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(0,0,0,0.15);
+  background-color: var(--accent-hover);
 }
 
 .addToCartBtn:active {
-  transform: translateY(0);
+  transform: scale(0.99);
 }

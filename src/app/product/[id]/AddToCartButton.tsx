@@ -17,7 +17,16 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <button className={styles.addToCartBtn} onClick={handleAdd}>
-      {added ? 'Added to Cart ✓' : 'Add to Cart — ' + product.formattedPrice}
+      {added ? (
+        <>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Added to Cart
+        </>
+      ) : (
+        `Add to Cart — ${product.formattedPrice}`
+      )}
     </button>
   );
 }

@@ -1,21 +1,47 @@
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --accent: #2563eb;
-  --gray-light: #f9fafb;
-  --gray-medium: #e5e7eb;
-  --gray-dark: #4b5563;
-  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-  --max-width: 1200px;
+  /* Ultra-minimalist modern variable setup */
+  --background: #fcfcfd;
+  --background-secondary: #f3f4f6;
+  --foreground: #111827;
+  --foreground-muted: #6b7280;
+  
+  --accent: #000000;
+  --accent-hover: #374151;
+  
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  
+  /* Delicate Glassmorphism */
+  --glass-bg: rgba(252, 252, 253, 0.85);
+  --glass-border: rgba(229, 231, 235, 0.5);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --max-width: 1280px;
+  
+  /* Sharp, professional radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --gray-light: #1f2937;
-    --gray-medium: #374151;
-    --gray-dark: #9ca3af;
+    --background: #09090b;
+    --background-secondary: #18181b;
+    --foreground: #f8fafc;
+    --foreground-muted: #94a3b8;
+    
+    --accent: #ffffff;
+    --accent-hover: #e2e8f0;
+
+    --border: #27272a;
+    --border-light: #1f1f22;
+
+    --glass-bg: rgba(9, 9, 11, 0.85);
+    --glass-border: rgba(39, 39, 42, 0.5);
+    --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -44,7 +70,7 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -57,12 +83,35 @@ h1, h2, h3, h4, h5, h6, p {
   flex-direction: column;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+/* Base Utility for Buttons */
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--background);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Subtle fade in for professional feel */
+@keyframes delicateFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  animation: delicateFadeIn 0.6s ease-out forwards;
 }

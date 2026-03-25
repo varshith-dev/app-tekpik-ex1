@@ -16,38 +16,38 @@ export default function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <>
+      <div className="app-container">
         <Header />
-        <div className={styles.emptyState}>
-          <h1 className={styles.emptyTitle}>Your cart is empty</h1>
-          <p>Looks like you haven't added any premium gadgets to your cart yet.</p>
-          <div style={{ marginTop: '2rem' }}>
-            <Link href="/" style={{ backgroundColor: 'var(--foreground)', color: 'var(--background)', padding: '1rem 2rem', borderRadius: '9999px', fontWeight: '600' }}>
-              Start Shopping
+        <div className={`${styles.emptyState} animate-fade-in`}>
+          <h1 className={styles.emptyTitle}>Your cart is empty.</h1>
+          <p style={{ fontSize: '1.25rem', color: 'var(--foreground-muted)' }}>Looks like you haven't added any premium tech to your cart yet.</p>
+          <div style={{ marginTop: '3rem' }}>
+            <Link href="/" className="btn-primary">
+              Discover Products
             </Link>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="app-container">
       <Header />
       <div className={styles.container}>
-        <h1 className={styles.title}>Shopping Cart</h1>
+        <h1 className={`${styles.title} animate-fade-in`}>Shopping Cart</h1>
         
         <div className={styles.grid}>
           <div className={styles.cartItems}>
-            {cartItems.map(item => (
-              <div key={item.id} className={`${styles.item} animate-fade-in`}>
-                <div className={styles.imageContainer}>
+            {cartItems.map((item, index) => (
+              <div key={item.id} className={`${styles.item} animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+                <Link href={`/product/${item.id}`} className={styles.imageContainer}>
                   <img src={item.imageUrl} alt={item.title} className={styles.image} />
-                </div>
+                </Link>
                 
                 <div className={styles.itemDetails}>
                   <div className={styles.itemHeader}>
-                    <h3 className={styles.itemTitle}>{item.title}</h3>
+                    <Link href={`/product/${item.id}`} className={styles.itemTitle}>{item.title}</Link>
                     <div className={styles.itemPrice}>{item.formattedPrice}</div>
                   </div>
                   <div className={styles.itemCategory}>{item.category}</div>
@@ -81,11 +81,11 @@ export default function CartPage() {
             ))}
           </div>
           
-          <div className={styles.summary}>
+          <div className={`${styles.summary} animate-fade-in`} style={{ animationDelay: '0.3s' }}>
             <h2 className={styles.summaryTitle}>Order Summary</h2>
             <div className={styles.summaryRow}>
               <span>Subtotal</span>
-              <span>{formattedTotal}</span>
+              <span style={{ color: 'var(--foreground)', fontWeight: 700 }}>{formattedTotal}</span>
             </div>
             <div className={styles.summaryRow}>
               <span>Shipping</span>
@@ -103,6 +103,6 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
