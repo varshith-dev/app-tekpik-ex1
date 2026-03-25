@@ -1,6 +1,4 @@
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import StatsBar from '@/components/StatsBar';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/supabase';
 import styles from './page.module.css';
@@ -19,27 +17,24 @@ export default async function Home() {
   return (
     <div className={styles.main}>
       <Header />
-      <Hero />
-      <StatsBar />
       
-      <section className={styles.discoverSection}>
-        <div className={styles.sectionHeader}>
-          <div className={styles.sectionSubtitle}>Discover</div>
-          <h2 className={styles.sectionTitle}>Featured Products</h2>
+      <section className={styles.storeSection}>
+        <div className={styles.storeHeader}>
+          <h1 className={styles.storeTitle}>All Products</h1>
         </div>
         
         {errorMsg ? (
-          <div style={{ padding: '4rem 2rem', textAlign: 'center', backgroundColor: '#fee2e2', color: '#991b1b', borderRadius: '1rem' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Missing Database Setup</h3>
+          <div className={styles.errorState}>
+            <h3 className={styles.errorTitle}>Missing Database Setup</h3>
             <p>{errorMsg}</p>
             <p style={{ marginTop: '1rem', fontSize: '0.875rem' }}>Please follow the supabase_setup.md artifact to configure your credentials and add products.</p>
           </div>
         ) : products.length === 0 ? (
-          <div style={{ padding: '4rem 2rem', textAlign: 'center', backgroundColor: 'var(--gray-light)', borderRadius: '1rem' }}>
+          <div className={styles.emptyState}>
             <p style={{ color: 'var(--gray-dark)' }}>No products found in the database. Please add some products using the Supabase dashboard.</p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2.5rem', textAlign: 'left' }}>
+          <div className={styles.productGrid}>
             {products.map((product, index) => (
               <ProductCard 
                 key={product.id}
@@ -55,11 +50,9 @@ export default async function Home() {
         )}
       </section>
       
-      <footer style={{ marginTop: 'auto', padding: '3rem 2rem', textAlign: 'center', borderTop: '1px solid var(--border)', color: 'var(--gray-dark)', fontSize: '0.875rem' }}>
+      <footer className={styles.footer}>
         &copy; {new Date().getFullYear()} TekPik. All rights reserved.
       </footer>
     </div>
   );
 }
-
-
