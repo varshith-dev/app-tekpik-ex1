@@ -31,15 +31,17 @@
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+  color: var(--foreground);
 }
 
 .storeTitle span {
   color: var(--foreground-muted);
+  font-weight: 400;
 }
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
   text-align: left;
 }
@@ -53,9 +55,9 @@
 }
 
 .errorState {
-  background-color: #fff1f2;
-  color: #be123c;
-  border-color: #fecdd3;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border-color: #fee2e2;
 }
 
 .errorTitle {
@@ -70,5 +72,5 @@
   text-align: center;
   border-top: 1px solid var(--border);
   color: var(--foreground-muted);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }

@@ -21,12 +21,14 @@ export default function Header() {
         <nav className={styles.nav}>
           <Link href="/" className={styles.navLink}>Shop</Link>
           <Link href="/" className={styles.navLink}>Collections</Link>
-          <button onClick={() => setIsCartOpen(true)} className={styles.cta}>
-            <ShoppingBag size={18} />
-            Cart
-            {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
-          </button>
+          <Link href="/" className={styles.navLink}>About</Link>
         </nav>
+
+        <button onClick={() => setIsCartOpen(true)} className={styles.cta}>
+          <ShoppingBag size={18} />
+          Cart
+          {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
+        </button>
       </header>
 
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />

@@ -1,59 +1,41 @@
 :root {
-  /* Ultra-minimalist modern variable setup */
-  --background: #fcfcfd;
-  --background-secondary: #f3f4f6;
-  --foreground: #111827;
+  /* LIGHT, SIMPLE, CLEAN TOKENS */
+  --background: #ffffff;
+  --background-secondary: #f9fafb; /* Very light gray */
+  --foreground: #111827; /* Dark slate text */
   --foreground-muted: #6b7280;
   
-  --accent: #000000;
-  --accent-hover: #374151;
+  --accent: #2563EB; /* Clean Blue */
+  --accent-hover: #1d4ed8;
   
   --border: #e5e7eb;
   --border-light: #f3f4f6;
   
-  /* Delicate Glassmorphism */
-  --glass-bg: rgba(252, 252, 253, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(229, 231, 235, 0.5);
-  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   
-  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --max-width: 1280px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   
-  /* Sharp, professional radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-pill: 9999px;
+  --max-width: 1200px;
+  
+  /* Soft, clean radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #09090b;
-    --background-secondary: #18181b;
-    --foreground: #f8fafc;
-    --foreground-muted: #94a3b8;
-    
-    --accent: #ffffff;
-    --accent-hover: #e2e8f0;
-
-    --border: #27272a;
-    --border-light: #1f1f22;
-
-    --glass-bg: rgba(9, 9, 11, 0.85);
-    --glass-border: rgba(39, 39, 42, 0.5);
-    --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  }
-}
-
+/* Force Light Mode Only *If* user strictly wants light. It will ignore OS dark mode. */
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
 }
 
 *, *::before, *::after {
@@ -70,7 +52,7 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-out;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -83,35 +65,36 @@ h1, h2, h3, h4, h5, h6, p {
   flex-direction: column;
 }
 
-/* Base Utility for Buttons */
+/* Clean Buttons */
 .btn-primary {
-  background-color: var(--accent);
+  background-color: var(--foreground);
   color: var(--background);
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid transparent;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-hover);
+  background-color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-primary:active {
   transform: scale(0.98);
 }
 
-/* Subtle fade in for professional feel */
-@keyframes delicateFadeIn {
+@keyframes simpleFadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
   opacity: 0;
-  animation: delicateFadeIn 0.6s ease-out forwards;
+  animation: simpleFadeIn 0.5s ease-out forwards;
 }

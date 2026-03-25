@@ -4,65 +4,91 @@
   background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  overflow: hidden;
   cursor: pointer;
   text-align: left;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: all 0.2s ease;
   height: 100%;
 }
 
 .card:hover {
-  box-shadow: var(--glass-shadow);
-  border-color: var(--foreground-muted);
+  border-color: #d1d5db; /* slightly darker border on hover */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* very soft, clean shadow */
+  transform: translateY(-2px);
 }
 
 .imageContainer {
   width: 100%;
   aspect-ratio: 1/1;
   background-color: var(--background-secondary);
+  border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  padding: 1.5rem;
 }
 
 .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   transition: transform 0.4s ease;
+  mix-blend-mode: multiply; /* removes white background from product images if they have one */
 }
 
 .card:hover .image {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.25rem;
   flex-grow: 1;
 }
 
 .category {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--foreground-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .title {
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--foreground);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   line-height: 1.4;
 }
 
-.price {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--foreground-muted);
+.priceRow {
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.quickAdd {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.2s ease;
+}
+
+.card:hover .quickAdd {
+  opacity: 1;
+  transform: translateX(0);
 }
